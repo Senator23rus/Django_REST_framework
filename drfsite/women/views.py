@@ -40,13 +40,12 @@ class WomenAPIList(generics.ListCreateAPIView):
     queryset = Women.objects.all()
     serializer_class = WomenSerializer
     permission_classes = (IsAuthenticated, )
-    # authentication_classes = (TokenAuthentication, ) # только по токену см settings
     # pagination_class = WomenAPIListPagination
 
 class WomenAPIUpdate(generics.RetrieveUpdateAPIView):
     queryset = Women.objects.all()
     serializer_class = WomenSerializer
-    permission_classes = (IsOwnerOrReadOnly, )
+    permission_classes = (IsAuthenticated, )
 
 class WomenAPIDetail(generics.RetrieveDestroyAPIView):
     queryset = Women.objects.all()
